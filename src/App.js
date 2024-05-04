@@ -24,22 +24,13 @@ const App = () => {
     };
     setTasks([...tasks, newTaskObj]);
     setNewTask('');
+    // Show a pop-up message
+    alert('Task added successfully!');
   };
-  
-
-  <form onSubmit={addTask} className="form-control">
-  <input
-    type="text"
-    placeholder="Add Task"
-    value={newTask}
-    onChange={(e) => setNewTask(e.target.value)}
-  />
-  <button type="submit" className="btn add-btn">Add</button>
-</form>
-
 
   const deleteTask = (id) => {
     setTasks(tasks.filter(task => task.id !== id));
+    alert('Task deleted successfully!');
   };
 
   const toggleTask = (id) => {
@@ -70,7 +61,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <h1>Task Tracker</h1>
+      <h1 className="heading-animation heading-highlight">Task Tracker</h1>
       <form onSubmit={addTask} className="form-control">
         <input
           type="text"
@@ -89,7 +80,7 @@ const App = () => {
         {filteredTasks.map(task => (
           <div
             key={task.id}
-            className={`task ${task.completed ? 'completed' : ''}`}
+            className={` task ${task.completed ? 'completed completed-task' : ''}`}
             draggable
             onDragStart={(e) => handleDragStart(e, task.id)}
           >
